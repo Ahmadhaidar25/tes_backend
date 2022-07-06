@@ -1,0 +1,48 @@
+ @extends('layout.main')
+ @section('content')
+ <div class="row">
+     <div class="col-sm-12 col-xl-6">
+        <div class="bg-secondary rounded h-100 p-4">
+            <h6 class="mb-4">Pesan Tiket</h6>
+            <form action="{{url('/beli/tiket')}}" method="post">
+                @csrf
+                <div class="form-floating mb-3">
+                    <select class="form-select" onchange="price()" id="kursi" name="jenis_tiket">
+                        <option selected value="">--Pilih Tiket--</option>
+                        <option value="2000000">VVIP</option>
+                        <option value="1000000">VIP</option>
+                        <option value="500000">REGULER</option>
+                    </select>
+
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="date" class="form-control" name="tanggal" value="{{$get->tanggal}}">
+                    <label for="floatingInput">Tanggal</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="harga"
+                    placeholder="name@example.com" readonly name="harga" value="{{$get->harga}}">
+                    <label for="floatingInput">Harga</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="qty" name="qty" value="{{$get->qty}}">
+                    <label for="floatingPassword">Qty</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="total" readonly name="total" value="{{$get->total}}">
+                    <label for="floatingPassword">Total</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Beli</button>
+            </form>
+
+        </div>
+    </div>
+
+
+
+</div>
+
+@endsection
